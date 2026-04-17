@@ -5,37 +5,37 @@ import { Card } from "@/components/ui/card";
 const useCases = [
   {
     icon: "01",
-    title: "Bug Reports",
+    title: "Der n\u00E4chtliche Bug",
     description:
-      "Fehler erkannt, priorisiert und direkt in den richtigen Prozess überführt – ohne manuelles Vorsortieren.",
+      "Freitagabend, 22 Uhr. Ein Kunde meldet: \u201ENichts geht mehr.\u201C Ticketpilot hat den Fix geschrieben, bevor dein Team Montagmorgen den Laptop aufklappt. Dein Dev reviewed, gibt Go, deployed. Vor dem ersten Kaffee.",
   },
   {
     icon: "02",
-    title: "Feature Requests",
+    title: "Die Feature-Flut",
     description:
-      "Wird strukturiert erfasst, richtig eingeordnet und automatisch ins Backlog übergeben.",
+      "Dein Produktmanager hat 30 Feature-Requests priorisiert. Dein Team schafft 8 pro Sprint. Mit Ticketpilot werden Standard-Features vorproduziert \u2013 dein Team reviewed und verfeinert nur noch. 12 statt 8. Gleiche Mannschaft.",
   },
   {
     icon: "03",
-    title: "Support-Anfragen",
+    title: "Der Tech-Debt-Berg",
     description:
-      "Antwort, Weiterleitung oder Folgeprozess: Ticketpilot entscheidet selbst, was als Nächstes passieren muss.",
+      "Seit zwei Jahren sagst du: \u201EDas refactoren wir irgendwann.\u201C Ticketpilot arbeitet Refactoring-Tickets nachts ab. Automatische Tests als Sicherheitsnetz. Morgens ist der Code sauberer als gestern.",
   },
 ];
 
 export function UseCases() {
   return (
     <SectionWrapper id="usecases">
-      <EyebrowBadge>Use Cases</EyebrowBadge>
+      <EyebrowBadge>Geschichten aus dem echten Leben</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
       >
-        Für genau diese Tickets gebaut
+        Drei Szenarien. Null Theorie.
       </h2>
       <p className="text-text-muted max-w-[740px] mt-0" style={{ fontSize: "clamp(18px, 2vw, 22px)" }}>
-        Nicht allgemein. Nicht theoretisch. Sondern für die Tickets, die dein Team
-        heute schon aufhalten.
+        Das hier sind keine Marketingversprechen. Das sind Situationen, die jedes
+        Entwicklerteam im Mittelstand kennt &ndash; und wie Ticketpilot sie ver&auml;ndert.
       </p>
 
       <div className="grid desktop:grid-cols-3 gap-5 mt-9">
