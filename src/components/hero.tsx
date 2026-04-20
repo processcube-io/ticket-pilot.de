@@ -36,8 +36,9 @@ function StatBox({ value, label }: { value: string; label: string }) {
 
 export function Hero() {
   return (
-    <section>
-      <div className="container py-[56px] max-tablet:py-[40px]">
+    <section className="min-h-[calc(100dvh-64px)] flex flex-col">
+      <div className="flex-1 flex items-center">
+        <div className="container py-[56px] max-tablet:py-[40px]">
         <div className="grid desktop:grid-cols-[1.05fr_0.95fr] gap-[34px] items-center">
           {/* Linke Spalte */}
           <div>
@@ -59,7 +60,7 @@ export function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-3.5 mt-[34px]">
-              <Button href="#pricing">30 Tage kostenlos testen &ndash; ohne Risiko</Button>
+              <Button href="https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot">30 Tage kostenlos testen &ndash; ohne Risiko</Button>
               <Button variant="secondary" href="#problem">
                 Warum das n&ouml;tig ist ↓
               </Button>
@@ -133,6 +134,7 @@ export function Hero() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

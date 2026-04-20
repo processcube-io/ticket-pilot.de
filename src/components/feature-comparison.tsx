@@ -1,10 +1,27 @@
 import { SectionWrapper } from "@/components/ui/section-wrapper";
+import { EyebrowBadge } from "@/components/ui/eyebrow-badge";
 import { Card } from "@/components/ui/card";
 
 export function FeatureComparison() {
   return (
-    <SectionWrapper>
-      <div className="grid desktop:grid-cols-2 gap-5">
+    <SectionWrapper id="vergleich">
+      <EyebrowBadge>Der Unterschied</EyebrowBadge>
+      <h2
+        className="headline max-w-[820px] mb-5"
+        style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
+      >
+        Zwei Dienstage. Eine Entscheidung.
+      </h2>
+      <p
+        className="text-text-muted max-w-[740px] mt-0"
+        style={{ fontSize: "clamp(18px, 2vw, 22px)" }}
+      >
+        Dasselbe Team. Dieselben 23 Tickets im Sprint. Einmal mit KI-Ping-Pong,
+        einmal mit Ticketpilot. Der Unterschied liegt nicht in der KI &ndash;
+        sondern darin, ob ein Prozess dahintersteht.
+      </p>
+
+      <div className="grid desktop:grid-cols-2 gap-5 mt-9">
         <Card>
           <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
             Gestern

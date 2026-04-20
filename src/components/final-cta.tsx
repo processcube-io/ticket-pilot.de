@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function FinalCta() {
   return (
-    <SectionWrapper id="finale">
+    <SectionWrapper id="finale" hideScrollHint>
       <EyebrowBadge>Eine letzte Frage</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
@@ -23,7 +23,7 @@ export function FinalCta() {
         Backlog schrumpft statt w&auml;chst.</strong>
       </p>
       <div className="flex flex-wrap gap-3.5 mt-[34px]">
-        <Button href="#">Jetzt kostenlos starten &ndash; in 15 Minuten l&auml;uft es</Button>
+        <Button href="https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot">Jetzt kostenlos starten &ndash; in 15 Minuten l&auml;uft es</Button>
       </div>
       <p className="text-text-muted text-sm mt-4">
         30 Tage kostenlos. Monatlich k&uuml;ndbar. Kein Sales-Call.

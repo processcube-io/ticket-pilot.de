@@ -103,7 +103,7 @@ export function LiveDemo() {
             <strong className="text-text-primary"> Das ist alles, was er tun muss.</strong>
           </p>
           <div className="flex flex-wrap gap-3.5 mt-6">
-            <Button href="#pricing">Selbst ausprobieren &ndash; 30 Tage kostenlos</Button>
+            <Button href="https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot">Selbst ausprobieren &ndash; 30 Tage kostenlos</Button>
           </div>
         </Card>
       </div>

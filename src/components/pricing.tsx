@@ -94,7 +94,7 @@ export function Pricing() {
       </div>
 
       <div className="mt-9 text-center">
-        <Button href="#">30 Tage kostenlos testen</Button>
+        <Button href="https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot">30 Tage kostenlos testen</Button>
         <p className="text-text-muted text-sm mt-4 max-w-[640px] mx-auto">
           Zahlungsmittel wird bei Registrierung hinterlegt. Die Abrechnung beginnt
           automatisch einen Tag nach Ablauf der 30 Tage. Monatlich k&uuml;ndbar.
