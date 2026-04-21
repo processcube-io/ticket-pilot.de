@@ -11,9 +11,9 @@ export function SectionWrapper({ id, children, className, hideScrollHint }: Sect
   return (
     <section
       id={id}
-      className={`min-h-[calc(100dvh-64px)] flex flex-col ${className ?? ""}`}
+      className={`min-h-[calc(100dvh-64px)] flex flex-col scroll-mt-[64px] ${className ?? ""}`}
     >
-      <div className="flex-1 flex items-center py-[88px] max-tablet:py-[70px]">
+      <div className="flex-1 flex items-center py-[56px] max-tablet:py-[40px]">
         <div className="container">{children}</div>
       </div>
       {!hideScrollHint && (

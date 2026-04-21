@@ -3,13 +3,12 @@
 import { useEffect, useState } from "react";
 
 const navLinks = [
+  { href: "#problem", label: "Das Problem" },
   { href: "#funktion", label: "So funktioniert's" },
-  { href: "#usecases", label: "Use Cases" },
-  { href: "#demo", label: "Live Moment" },
-  { href: "#warum", label: "Warum das funktioniert" },
-  { href: "#integration", label: "Integration" },
+  { href: "#demo", label: "Der Beweis" },
   { href: "#pricing", label: "Pricing" },
-  { href: "#finale", label: "Finale Entscheidung" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#finale", label: "Kostenlos testen" },
 ];
 
 export function Header() {

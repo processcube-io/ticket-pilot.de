@@ -5,43 +5,44 @@ import { Card } from "@/components/ui/card";
 const steps = [
   {
     number: 1,
-    title: "Ticket kommt rein",
+    title: "Docker starten",
     description:
-      "Per E-Mail, Odoo oder API. Ticketpilot übernimmt sofort und erkennt, worum es wirklich geht.",
+      "Ein Befehl. ProcessCube + Ticketpilot laufen auf deinem Server. Keine Cloud, keine Abh\u00E4ngigkeit, deine Daten bleiben bei dir.",
   },
   {
     number: 2,
-    title: "Ticketpilot entscheidet",
+    title: "Systeme verbinden",
     description:
-      "Inhalt, Kontext und nächste Aktion werden automatisch bestimmt – ohne manuelles Triaging.",
+      "Odoo oder Jira als Ticket-Quelle. Claude Code, GPT oder Gemini als KI. Dein Repo als Ziel. Drei Felder ausf\u00FCllen, fertig.",
   },
   {
     number: 3,
-    title: "Lösung wird umgesetzt",
+    title: "Erstes Ticket durchlaufen lassen",
     description:
-      "Der passende Prozess startet selbst. Routing, Antwort oder Folgeaktion laufen automatisch.",
+      "BPMN-Template aktivieren, erstes Ticket einwerfen, zusehen wie es durch den Prozess l\u00E4uft. Ab jetzt l\u00E4uft das automatisch.",
   },
 ];
 
 export function HowItWorks() {
   return (
     <SectionWrapper id="funktion">
-      <EyebrowBadge>So funktioniert&apos;s</EyebrowBadge>
+      <EyebrowBadge>Kein IT-Projekt. Versprochen.</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
       >
-        Ein Ticket. Drei Schritte. Fertig.
+        Du bist schneller fertig als dein Kaffee kalt wird.
       </h2>
       <p className="text-text-muted max-w-[740px] mt-0" style={{ fontSize: "clamp(18px, 2vw, 22px)" }}>
-        Keine technische Erklärung. Kein Prozessdiagramm. Nur das, was zählt: Ein
-        eingehendes Ticket wird automatisch verstanden, entschieden und gelöst.
+        Keine Beraterfirma. Kein 6-Monats-Projekt. Kein Steering Committee.
+        Dein DevOps startet morgens den Container und mittags l&auml;uft
+        das erste Ticket automatisch durch.
       </p>
 
       <div className="grid desktop:grid-cols-3 gap-5 mt-9">
         {steps.map((step) => (
           <Card key={step.number}>
-            <div className="w-[54px] h-[54px] rounded-full bg-accent text-bg grid place-items-center font-headline text-[28px] font-black">
+            <div className="w-[60px] h-[60px] rounded-[16px] bg-accent-soft border border-accent-border grid place-items-center text-accent font-black font-headline text-[26px]">
               {step.number}
             </div>
             <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-3 mb-2.5 leading-none">
