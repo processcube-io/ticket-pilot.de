@@ -5,62 +5,115 @@ import { Card } from "@/components/ui/card";
 export function WhyItWorks() {
   return (
     <SectionWrapper id="warum">
-      <EyebrowBadge>Die Rechnung, die dein Chef sehen will</EyebrowBadge>
+      <EyebrowBadge>ROI-Rechnung</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
       >
-        249 &euro;/Monat. 15.000 &euro; zur&uuml;ck.
+        249 &euro;/Monat. Konservativ 9.000 &euro; zur&uuml;ck. Pro Dev. Pro Jahr.
       </h2>
       <p
         className="text-text-muted max-w-[740px] mt-0"
         style={{ fontSize: "clamp(18px, 2vw, 22px)" }}
       >
-        Ein durchschnittlicher Entwickler kostet 60.000 &euro; im Jahr. Davon gehen
-        rund 25% f&uuml;r Fehlersuche, Ticket-Kontext aufbauen und manuelles Debugging
-        drauf. Das sind 15.000 &euro; &ndash; pro Entwickler, pro Jahr. Verschwendet.
+        Keine Marketingzahl. Eine Rechnung mit offengelegten Annahmen &ndash;
+        unten drunter. Setz deine eigenen Werte ein, wenn dein Team teurer
+        oder g&uuml;nstiger ist.
       </p>
 
       <div className="grid desktop:grid-cols-3 gap-5 mt-9">
         <Card>
-          <strong className="block text-[48px] font-headline leading-none text-accent">
-            60k&euro;
+          <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
+            Annahme 1
+          </span>
+          <strong className="block text-[44px] font-headline leading-none text-accent mt-3">
+            75k&euro;
           </strong>
           <span className="text-text-muted block mt-2">
-            kostet ein Entwickler pro Jahr
+            Vollkosten pro Dev / Jahr (DE, Median)
           </span>
           <p className="text-text-muted m-0 mt-4 text-sm">
-            Gehalt, Sozialabgaben, Arbeitsplatz. Und mindestens ein Viertel davon
-            geht f&uuml;r T&auml;tigkeiten drauf, die eine KI in Sekunden erledigt.
+            Bruttogehalt ca.&nbsp;60&nbsp;k&euro; laut Stack Overflow Developer
+            Survey 2024 (DE, Median Backend), plus ca.&nbsp;25&nbsp;% Lohnnebenkosten
+            und Arbeitsplatzkosten. Spanne in der Praxis: 60&ndash;110&nbsp;k&euro;.
           </p>
         </Card>
         <Card>
-          <strong className="block text-[48px] font-headline leading-none text-accent">
-            249&euro;
+          <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
+            Annahme 2
+          </span>
+          <strong className="block text-[44px] font-headline leading-none text-accent mt-3">
+            17h
           </strong>
           <span className="text-text-muted block mt-2">
-            kostet Ticketpilot pro Monat
+            pro Woche f&uuml;r Debug, Maintenance, Bad Code
           </span>
           <p className="text-text-muted m-0 mt-4 text-sm">
-            Weniger als ein Mittagessen pro Arbeitstag. Daf&uuml;r bekommt
-            dein Team einen KI-Prozess, der Tickets automatisch analysiert,
-            Fixes generiert und testet.
+            Quelle: Stripe &bdquo;Developer Coefficient&ldquo; (2018, n&nbsp;=&nbsp;1.062 Devs).
+            Das sind ca.&nbsp;42&nbsp;% der Arbeitszeit. Wir rechnen konservativ
+            mit 30&nbsp;% f&uuml;r Ticket-Routine, die sich automatisieren l&auml;sst.
           </p>
         </Card>
         <Card highlighted>
-          <strong className="block text-[48px] font-headline leading-none text-accent">
-            15k&euro;
+          <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
+            Ergebnis (konservativ)
+          </span>
+          <strong className="block text-[44px] font-headline leading-none text-accent mt-3">
+            9k&euro;
           </strong>
           <span className="text-text-muted block mt-2">
-            Produktivit&auml;t zur&uuml;ck &ndash; pro Entwickler
+            R&uuml;ckgewinn pro Dev / Jahr
           </span>
           <p className="text-text-muted m-0 mt-4 text-sm">
-            25% weniger Zeitverschwendung. Dein Entwickler arbeitet an dem,
-            wof&uuml;r du ihn eingestellt hast: Features bauen, nicht Bugs jagen.
-            Bei 4 Entwicklern sind das 60.000 &euro; im Jahr.
+            75k &middot; 30&nbsp;% &middot; 40&nbsp;% Automatisierungsquote
+            = 9.000&nbsp;&euro;. Bei 4 Devs: 36.000&nbsp;&euro;. Ticketpilot kostet
+            davon ca.&nbsp;3.000&nbsp;&euro;/Jahr. ROI ab Monat&nbsp;2.
           </p>
         </Card>
       </div>
+
+      <div className="mt-7 max-w-[820px] border border-line rounded-inner p-4 bg-white/[0.02] flex items-center justify-between gap-4 flex-wrap">
+        <div>
+          <strong className="text-text-primary block">
+            Zum Weitergeben an CFO / Einkauf
+          </strong>
+          <span className="text-text-muted text-sm">
+            Druckoptimierter Onepager mit Formel, Quellen und Skalierung auf 1&ndash;20 Devs.
+          </span>
+        </div>
+        <a
+          href="/roi-onepager"
+          className="plausible-event-name=cta_roi_onepager inline-flex items-center justify-center min-h-[44px] px-5 rounded-btn font-bold bg-transparent text-text-primary border border-line hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 shrink-0"
+        >
+          Onepager &ouml;ffnen &rarr;
+        </a>
+      </div>
+
+      <p className="text-text-muted text-sm max-w-[820px] mt-5">
+        <strong className="text-text-primary">Transparenz:</strong>{" "}
+        Die Zahlen sind Annahmen, keine Garantie. Die 40&nbsp;%
+        Automatisierungsquote basiert auf unserem eigenen ProcessCube-Support
+        &ndash; euer Team-Mix (Bug vs. Feature vs. Rechnungsfrage) kann h&ouml;her
+        oder niedriger liegen. Quellen:{" "}
+        <a
+          href="https://survey.stackoverflow.co/2024/"
+          className="underline hover:text-text-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Stack Overflow Developer Survey 2024
+        </a>
+        ,{" "}
+        <a
+          href="https://stripe.com/files/reports/the-developer-coefficient.pdf"
+          className="underline hover:text-text-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Stripe Developer Coefficient 2018
+        </a>
+        .
+      </p>
     </SectionWrapper>
   );
 }

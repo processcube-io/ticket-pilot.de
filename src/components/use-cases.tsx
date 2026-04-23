@@ -26,7 +26,7 @@ const useCases = [
 export function UseCases() {
   return (
     <SectionWrapper id="usecases">
-      <EyebrowBadge>Geschichten aus dem echten Leben</EyebrowBadge>
+      <EyebrowBadge>Use Cases</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}

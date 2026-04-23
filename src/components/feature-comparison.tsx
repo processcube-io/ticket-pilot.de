@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 export function FeatureComparison() {
   return (
     <SectionWrapper id="vergleich">
-      <EyebrowBadge>Der Unterschied</EyebrowBadge>
+      <EyebrowBadge>Vergleich</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
@@ -45,12 +45,19 @@ export function FeatureComparison() {
             Dienstagmorgen mit Ticketpilot
           </h3>
           <ul className="feature-list">
-            <li>09:00 &ndash; 23 Tickets gehen ein. Ticketpilot klassifiziert automatisch</li>
-            <li>09:03 &ndash; KI hat f&uuml;r 8 Standard-Bugs Fixes geschrieben. Tests laufen</li>
-            <li>10:00 &ndash; Dein Dev reviewed nur noch. 6 von 8 sind fehlerfrei. Go</li>
-            <li>11:00 &ndash; Deployed. Tickets geschlossen. Audit-Trail dokumentiert alles</li>
+            <li>09:00 &ndash; 23 Tickets gehen ein. Ticketpilot klassifiziert und best&auml;tigt Kunden direkt</li>
+            <li>09:02 &ndash; KI startet Fixes f&uuml;r Standard-Bugs. Tests laufen automatisch</li>
+            <li>09:45 &ndash; Erste Fixes auf Testumgebung. Dein Dev reviewed &ndash; 90&nbsp;% gehen ohne Nacharbeiten durch</li>
+            <li>10:30 &ndash; Tickets geschlossen. Audit-Trail dokumentiert jeden Schritt</li>
             <li>14:00 &ndash; Dein Team arbeitet an Features statt an Feuerwehr&uuml;bungen</li>
           </ul>
+          <p className="text-[11px] text-text-muted mt-4 pt-3 border-t border-line">
+            90&nbsp;%-Freigabequote und 30&ndash;60&nbsp;Min/Ticket aus unserem eigenen
+            ProcessCube-Support (n&nbsp;=&nbsp;312 Tickets, 6 Monate).{" "}
+            <a href="#proof" className="underline hover:text-text-primary">
+              Details hier.
+            </a>
+          </p>
         </Card>
       </div>
     </SectionWrapper>

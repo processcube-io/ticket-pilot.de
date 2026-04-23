@@ -1,7 +1,7 @@
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { EyebrowBadge } from "@/components/ui/eyebrow-badge";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { PrimaryCta } from "@/components/ui/primary-cta";
 
 const demoSteps = [
   {
@@ -11,10 +11,10 @@ const demoSteps = [
     tag: "Eingang",
   },
   {
-    time: "0:03",
-    title: "KI kategorisiert automatisch",
-    description: "Ticketpilot erkennt: Bug Report. Nicht Sales, nicht Feature Request, nicht Rechnungsfrage.",
-    tag: "Kategorisiert",
+    time: "0:02",
+    title: "Kunde bekommt direkt eine Antwort",
+    description: "Ticketpilot klassifiziert (Bug Report, nicht Sales/Feature/Rechnung) und schickt dem Kunden automatisch eine Eingangsbest\u00E4tigung mit Status. Keine Wartezeit.",
+    tag: "Kunden-Ack",
   },
   {
     time: "0:05",
@@ -23,39 +23,47 @@ const demoSteps = [
     tag: "Odoo",
   },
   {
-    time: "0:45",
+    time: "2:00",
     title: "Coding Task erstellt, Claude Code startet",
     description: "In VibeKanban wird ein Task angelegt. Claude Code analysiert den Bug, schreibt den Fix, f\u00FChrt Tests aus.",
     tag: "Coding",
   },
   {
-    time: "12:00",
+    time: "25:00",
     title: "Tests bestanden, Folgefehler gepr\u00FCft",
     description: "Claude Code erkennt Folgefehler, behebt sie, testet erneut. Bei Bedarf geht es in Interaktion mit dem Entwickler.",
     tag: "Auto-QA",
   },
   {
-    time: "15:00",
-    title: "Fix auf Testumgebung deployed",
-    description: "Der Entwickler \u00F6ffnet die Testumgebung, pr\u00FCft das Ergebnis, gibt die letzte Abnahme. Fertig.",
+    time: "45:00",
+    title: "Fix reviewed & auf Testumgebung deployed",
+    description: "Der Entwickler \u00F6ffnet die Testumgebung, pr\u00FCft das Ergebnis, gibt die Abnahme. 90\u00A0% der F\u00E4lle gehen ohne Nacharbeiten durch. Fertig.",
     tag: "Abnahme",
   },
 ];
 
-export function LiveDemo() {
+const DEFAULT_SHOP_HREF =
+  "https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot";
+
+export function LiveDemo({
+  ctaHref = DEFAULT_SHOP_HREF,
+  ctaLabel,
+}: { ctaHref?: string; ctaLabel?: string } = {}) {
   return (
     <SectionWrapper id="demo">
-      <EyebrowBadge>So l&auml;uft das bei uns. Jeden Tag.</EyebrowBadge>
+      <EyebrowBadge>Der Beweis</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
       >
-        15 Minuten. Von &ldquo;Ticket rein&rdquo; bis &ldquo;Fix auf Testumgebung&rdquo;.
+        30&ndash;60 Minuten. Von &ldquo;Ticket rein&rdquo; bis &ldquo;Fix auf Testumgebung&rdquo;.
       </h2>
       <p className="text-text-muted max-w-[740px] mt-0" style={{ fontSize: "clamp(18px, 2vw, 22px)" }}>
         Kein hypothetisches Szenario. So sieht es aus, wenn bei uns ein
-        Bug-Report &uuml;ber das Supportformular eingeht. Wir nutzen Ticketpilot
-        f&uuml;r unseren eigenen ProcessCube-Support.
+        Bug-Report &uuml;ber das Supportformular eingeht. Die Kundenr&uuml;ckmeldung
+        geht direkt nach dem Eingang raus, die eigentliche L&ouml;sung inkl. Review
+        dauert in der Regel 30&ndash;60 Minuten. Wir nutzen Ticketpilot f&uuml;r unseren
+        eigenen ProcessCube-Support.
       </p>
 
       <div className="grid desktop:grid-cols-[1.1fr_0.9fr] gap-5 mt-9">
@@ -102,8 +110,8 @@ export function LiveDemo() {
             Ergebnis und gibt die Abnahme.
             <strong className="text-text-primary"> Das ist alles, was er tun muss.</strong>
           </p>
-          <div className="flex flex-wrap gap-3.5 mt-6">
-            <Button href="https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot">Selbst ausprobieren &ndash; 30 Tage kostenlos</Button>
+          <div className="mt-6">
+            <PrimaryCta href={ctaHref} event="cta_demo_trial" label={ctaLabel} />
           </div>
         </Card>
       </div>
