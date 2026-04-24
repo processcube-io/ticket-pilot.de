@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Barlow_Condensed, Roboto } from "next/font/google";
 import { DownloadProvider } from "@/components/download-modal";
+import { OnepagerProvider } from "@/components/onepager-modal";
 import "./globals.css";
 
 const barlow = Barlow_Condensed({
@@ -52,7 +53,9 @@ export default function RootLayout({
     <html lang="de" className={`${barlow.variable} ${roboto.variable}`}>
       <body>
         <DownloadProvider>
+        <OnepagerProvider>
         {children}
+        </OnepagerProvider>
         </DownloadProvider>
         {plausibleDomain && (
           <Script

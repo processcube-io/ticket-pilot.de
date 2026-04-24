@@ -1,6 +1,7 @@
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { EyebrowBadge } from "@/components/ui/eyebrow-badge";
 import { Card } from "@/components/ui/card";
+import { OnepagerButton } from "@/components/ui/onepager-button";
 
 export function WhyItWorks() {
   return (
@@ -80,12 +81,11 @@ export function WhyItWorks() {
             Druckoptimierter Onepager mit Formel, Quellen und Skalierung auf 1&ndash;20 Devs.
           </span>
         </div>
-        <a
-          href="/roi-onepager"
+        <OnepagerButton
           className="plausible-event-name=cta_roi_onepager inline-flex items-center justify-center min-h-[44px] px-5 rounded-btn font-bold bg-transparent text-text-primary border border-line hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 shrink-0"
         >
           Onepager &ouml;ffnen &rarr;
-        </a>
+        </OnepagerButton>
       </div>
 
       <p className="text-[11px] text-text-muted/40 mt-5 pl-3 border-l border-line/50 leading-relaxed">
