@@ -62,7 +62,7 @@ export function Integration() {
         Claude Code, GPT, Gemini &ndash; oder ein lokales Modell.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9">
+      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
         {integrations.map((item) => (
           <div
             key={item.title}

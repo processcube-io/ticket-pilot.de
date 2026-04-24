@@ -132,12 +132,12 @@ export function Compliance() {
       <p className="text-text-muted text-sm mt-6 max-w-[820px]">
         <strong className="text-text-primary">Noch eine Frage offen?</strong>{" "}
         Dein Datenschutz- oder Security-Team darf direkt mit uns sprechen.
-        Schreib uns an{" "}
+        Kontaktiere uns &uuml;ber{" "}
         <a
-          href="mailto:info@processcube.io?subject=Ticketpilot%20Compliance-Anfrage"
+          href="https://www.processcube.io/kontakt"
           className="underline hover:text-text-primary"
         >
-          info@processcube.io
+          processcube.io/kontakt
         </a>
         .
       </p>

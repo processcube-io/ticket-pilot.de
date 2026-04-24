@@ -62,10 +62,10 @@ export function ProblemAgitation() {
         was die KI eigentlich gebaut hat.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9">
+      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
         <Card>
           <IconBadge><IconAlertTriangle /></IconBadge>
-          <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-2.5 leading-none">
+          <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-2.5 leading-none [text-wrap:balance]">
             &ldquo;Accept All&rdquo; und hoffen
           </h3>
           <p className="text-text-muted m-0">
@@ -76,7 +76,7 @@ export function ProblemAgitation() {
         </Card>
         <Card>
           <IconBadge><IconTrendingDown /></IconBadge>
-          <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-2.5 leading-none">
+          <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-2.5 leading-none [text-wrap:balance]">
             Schneller, aber nicht besser
           </h3>
           <p className="text-text-muted m-0">
@@ -87,7 +87,7 @@ export function ProblemAgitation() {
         </Card>
         <Card>
           <IconBadge><IconShieldOff /></IconBadge>
-          <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-2.5 leading-none">
+          <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-2.5 leading-none [text-wrap:balance]">
             Wenn es knallt, wei&szlig; keiner warum
           </h3>
           <p className="text-text-muted m-0">
@@ -105,7 +105,7 @@ export function ProblemAgitation() {
       </p>
 
       {/* Trust-Anker: die 3 h&auml;ufigsten Einw&auml;nde direkt hier platt machen */}
-      <div className="mt-9 max-w-[820px] mx-auto grid desktop:grid-cols-3 gap-3 text-sm">
+      <div className="mt-9 max-w-[820px] mx-auto grid desktop:grid-cols-3 gap-5 text-sm">
         <div className="border border-line rounded-inner p-4 bg-white/[0.02]">
           <strong className="text-text-primary block mb-1">Dein Code bleibt deiner.</strong>
           <span className="text-text-muted">On-Prem auf deiner Infra. Die IP am Fix liegt bei dir.</span>

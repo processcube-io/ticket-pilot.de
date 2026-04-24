@@ -115,7 +115,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@processcube.io"
+                  href="https://www.processcube.io/kontakt"
                   className="hover:text-text-primary transition-colors"
                 >
                   info@processcube.io

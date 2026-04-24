@@ -1,19 +1,20 @@
+"use client";
+
+import { useDownload } from "@/components/download-modal";
+
 interface ButtonProps {
   variant?: "primary" | "secondary";
   href: string;
   children: React.ReactNode;
-  /**
-   * Plausible-Event-Name (optional). Wird als `data-event` gesetzt und vom
-   * Plausible-Script als Custom Event erfasst, sobald
-   * NEXT_PUBLIC_PLAUSIBLE_DOMAIN gesetzt ist.
-   */
   event?: string;
 }
 
+const DOWNLOAD_TRIGGER = "https://www.processcube.io/download";
+
 export function Button({ variant = "primary", href, children, event }: ButtonProps) {
-  const isExternal = /^https?:\/\//i.test(href);
-  // Plausible Custom-Event: Klasse `plausible-event-name=<event>` wird vom
-  // Plausible-Script automatisch getrackt, sobald das Script geladen ist.
+  const { open } = useDownload();
+  const isDownload = href === DOWNLOAD_TRIGGER;
+  const isExternal = !isDownload && /^https?:\/\//i.test(href);
   const plausibleClass = event ? `plausible-event-name=${event}` : "";
 
   const base =
@@ -23,11 +24,25 @@ export function Button({ variant = "primary", href, children, event }: ButtonPro
       ? "bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_2px_8px_rgba(248,181,68,0.3)]"
       : "bg-transparent text-text-primary border-line hover:bg-white/5";
 
+  const cls = [base, variantCls, plausibleClass].filter(Boolean).join(" ");
+
+  if (isDownload) {
+    return (
+      <button
+        onClick={open}
+        className={`${cls} cursor-pointer`}
+        style={variant === "primary" ? { color: "#000" } : undefined}
+      >
+        {children}
+      </button>
+    );
+  }
+
   return (
     <a
       href={href}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={[base, variantCls, plausibleClass].filter(Boolean).join(" ")}
+      className={cls}
       style={variant === "primary" ? { color: "#000" } : undefined}
     >
       {children}

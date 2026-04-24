@@ -100,7 +100,7 @@ export function Pricing({
         Ticketpilot l&auml;uft und wer die Infrastruktur pflegt.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9">
+      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
         {plans.map((plan) => (
           <Card key={plan.tag} highlighted={plan.highlighted}>
             <div className="flex items-center justify-between gap-2">
@@ -150,7 +150,7 @@ export function Pricing({
         ))}
       </div>
 
-      <div className="mt-7 max-w-[820px] mx-auto border border-accent-border bg-accent-soft rounded-inner p-5 text-center">
+      <div className="mt-7 border border-accent-border bg-accent-soft rounded-inner p-5 text-center">
         <strong className="text-text-primary block">
           ROI ab Monat 2 &ndash; bei einem 4-Dev-Team.
         </strong>
@@ -164,8 +164,8 @@ export function Pricing({
 
       <div className="mt-7 flex flex-col items-center text-center">
         <PrimaryCta href={ctaHref} event="cta_pricing_trial" label={ctaLabel} />
-        <p className="text-text-muted text-sm mt-4 max-w-[720px] mx-auto">
-          <strong className="text-text-primary">Kein Abo-Automatismus ohne Hinweis:</strong>{" "}
+        <p className="text-[11px] text-text-muted/40 mt-5 text-left pl-3 border-l border-line/50 leading-relaxed">
+          <strong className="text-text-muted/60">Kein Abo-Automatismus ohne Hinweis:</strong>{" "}
           Zahlungsmittel wird bei Registrierung hinterlegt. 5 Tage vor Ablauf der
           30-Tage-Testphase erh&auml;ltst du eine Erinnerung per E-Mail. Ohne
           K&uuml;ndigung startet die Abrechnung am Tag 31. Monatlich k&uuml;ndbar.

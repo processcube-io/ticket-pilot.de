@@ -31,7 +31,7 @@ export function SocialProof() {
         aus diesem Zeitraum.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9">
+      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
         <Card>
           <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
             Eigene Tickets
@@ -80,11 +80,10 @@ export function SocialProof() {
         </Card>
       </div>
 
-      <p className="text-text-muted text-sm max-w-[820px] mt-7">
-        <strong className="text-text-primary">Transparenz:</strong>{" "}
+      <p className="text-[11px] text-text-muted/40 mt-7 pl-3 border-l border-line/50 leading-relaxed">
+        <strong className="text-text-muted/60">Transparenz:</strong>{" "}
         Zahlen aus unserem ProcessCube-Support, 6 Monate Laufzeit, n&nbsp;=&nbsp;312
-        Tickets. L&ouml;sungen dauern bei uns in der Regel{" "}
-        <strong className="text-text-primary">30&ndash;60 Minuten inkl. Review</strong>.
+        Tickets. L&ouml;sungen dauern bei uns in der Regel 30&ndash;60 Minuten inkl. Review.
         Euer Team-Mix kann h&ouml;her oder niedriger liegen &ndash; wir zeigen
         dir die realen Zahlen deines Teams live auf dem Dashboard, sobald dein
         Trial l&auml;uft.

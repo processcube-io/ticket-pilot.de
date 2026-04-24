@@ -33,7 +33,7 @@ export function WhyNow({
         Produktivit&auml;t ungenutzt verloren.
       </p>
 
-      <div className="mt-9 grid desktop:grid-cols-3 gap-5">
+      <div className="mt-9 grid desktop:grid-cols-3 gap-5 items-stretch">
         <div className="border border-line rounded-card p-6 bg-white/[0.02]">
           <span className="text-xs uppercase tracking-[0.12em] font-bold text-text-muted">
             1 Woche Warten
@@ -70,7 +70,7 @@ export function WhyNow({
         </div>
       </div>
 
-      <div className="mt-9 max-w-[820px] border border-line rounded-card p-6 bg-white/[0.02]">
+      <div className="mt-5 border border-line rounded-card p-6 bg-white/[0.02]">
         <h3 className="font-headline text-[22px] uppercase tracking-[0.02em] m-0 mb-3 leading-none">
           Der asymmetrische Deal
         </h3>
@@ -91,7 +91,7 @@ export function WhyNow({
         </div>
       </div>
 
-      <div className="mt-7 max-w-[820px] border border-line rounded-card p-6 bg-white/[0.02]">
+      <div className="mt-5 border border-line rounded-card p-6 bg-white/[0.02]">
         <h3 className="font-headline text-[22px] uppercase tracking-[0.02em] m-0 mb-3 leading-none">
           Der externe Trigger, den du nicht verschieben kannst
         </h3>
@@ -103,19 +103,19 @@ export function WhyNow({
           Ticketpilot liefert den Audit-Trail ab Tag 1 &ndash; jedes Ticket,
           jeder Fix, jeder Reviewer dokumentiert.
         </p>
-        <p className="text-[11px] text-text-muted mt-3 m-0">
+        <p className="text-[10px] text-text-muted/40 mt-3 m-0 pl-3 border-l border-line/50">
           Quelle: Richtlinie (EU) 2022/2555 &bdquo;NIS2&ldquo;, Umsetzung in
           DE durch NIS2UmsuCG (in Gesetzgebung).
         </p>
       </div>
 
-      <p className="text-text-muted text-sm mt-6 max-w-[820px]">
-        <strong className="text-text-primary">Hinweis:</strong> Die 173&nbsp;&euro;
+      <p className="text-[11px] text-text-muted/40 mt-6 pl-3 border-l border-line/50 leading-relaxed">
+        <strong className="text-text-muted/60">Hinweis:</strong> Die 173&nbsp;&euro;
         sind Opportunity Cost, keine Kosten, die dir jemand in Rechnung stellt.
         Konservativ gerechnet (75k&thinsp;&euro; Dev-Vollkosten &middot;
         30&nbsp;% Ticket-Routine &middot; 40&nbsp;% Automatisierungsquote).
         Eigene Annahmen verwenden? Nimm die{" "}
-        <a href="#warum" className="underline hover:text-text-primary">
+        <a href="#warum" className="underline hover:text-text-muted/70">
           ROI-Rechnung
         </a>{" "}
         und ersetze die Zahlen.

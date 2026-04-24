@@ -66,7 +66,7 @@ export function LiveDemo({
         eigenen ProcessCube-Support.
       </p>
 
-      <div className="grid desktop:grid-cols-[1.1fr_0.9fr] gap-5 mt-9">
+      <div className="grid desktop:grid-cols-2 gap-5 mt-9 items-stretch">
         <Card>
           <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-0 mb-4 leading-none">
             Echtes Ticket &ndash; Echtzeit
@@ -92,20 +92,20 @@ export function LiveDemo({
           </div>
         </Card>
 
-        <Card>
+        <Card className="flex flex-col justify-center text-center items-center">
           <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
             Was dein Entwickler in der Zeit gemacht hat
           </span>
           <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-3 mb-2.5 leading-none">
             Etwas anderes. Etwas Wichtigeres.
           </h3>
-          <p className="text-text-muted">
+          <p className="text-text-muted max-w-[400px]">
             W&auml;hrend Ticketpilot den Bug kategorisiert, den Fix schreibt,
             testet und auf die Testumgebung deployed &ndash; hat dein Entwickler
             an einem Feature gearbeitet. Oder Architektur reviewed. Oder Kaffee
             getrunken. Der Punkt ist: Er musste nicht debuggen.
           </p>
-          <p className="text-text-muted mt-3">
+          <p className="text-text-muted mt-3 max-w-[400px]">
             Nach 15 Minuten &ouml;ffnet er die Testumgebung, pr&uuml;ft das
             Ergebnis und gibt die Abnahme.
             <strong className="text-text-primary"> Das ist alles, was er tun muss.</strong>

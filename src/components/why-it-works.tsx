@@ -21,7 +21,7 @@ export function WhyItWorks() {
         oder g&uuml;nstiger ist.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9">
+      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
         <Card>
           <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
             Annahme 1
@@ -48,10 +48,9 @@ export function WhyItWorks() {
           <span className="text-text-muted block mt-2">
             pro Woche f&uuml;r Debug, Maintenance, Bad Code
           </span>
-          <p className="text-text-muted m-0 mt-4 text-sm">
+          <p className="text-[10px] text-text-muted/40 m-0 mt-auto pt-4 border-t border-line/30 leading-relaxed">
             Quelle: Stripe &bdquo;Developer Coefficient&ldquo; (2018, n&nbsp;=&nbsp;1.062 Devs).
-            Das sind ca.&nbsp;42&nbsp;% der Arbeitszeit. Wir rechnen konservativ
-            mit 30&nbsp;% f&uuml;r Ticket-Routine, die sich automatisieren l&auml;sst.
+            42&nbsp;% der Arbeitszeit. Konservativ mit 30&nbsp;% gerechnet.
           </p>
         </Card>
         <Card highlighted>
@@ -72,7 +71,7 @@ export function WhyItWorks() {
         </Card>
       </div>
 
-      <div className="mt-7 max-w-[820px] border border-line rounded-inner p-4 bg-white/[0.02] flex items-center justify-between gap-4 flex-wrap">
+      <div className="mt-7 border border-line rounded-inner p-4 bg-white/[0.02] flex items-center justify-between gap-4 flex-wrap">
         <div>
           <strong className="text-text-primary block">
             Zum Weitergeben an CFO / Einkauf
@@ -89,15 +88,15 @@ export function WhyItWorks() {
         </a>
       </div>
 
-      <p className="text-text-muted text-sm max-w-[820px] mt-5">
-        <strong className="text-text-primary">Transparenz:</strong>{" "}
+      <p className="text-[11px] text-text-muted/40 mt-5 pl-3 border-l border-line/50 leading-relaxed">
+        <strong className="text-text-muted/60">Transparenz:</strong>{" "}
         Die Zahlen sind Annahmen, keine Garantie. Die 40&nbsp;%
         Automatisierungsquote basiert auf unserem eigenen ProcessCube-Support
         &ndash; euer Team-Mix (Bug vs. Feature vs. Rechnungsfrage) kann h&ouml;her
         oder niedriger liegen. Quellen:{" "}
         <a
           href="https://survey.stackoverflow.co/2024/"
-          className="underline hover:text-text-primary"
+          className="underline hover:text-text-muted/60"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -106,7 +105,7 @@ export function WhyItWorks() {
         ,{" "}
         <a
           href="https://stripe.com/files/reports/the-developer-coefficient.pdf"
-          className="underline hover:text-text-primary"
+          className="underline hover:text-text-muted/60"
           target="_blank"
           rel="noopener noreferrer"
         >

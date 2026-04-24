@@ -41,7 +41,7 @@ export function PrimaryCta({
         )}
       </div>
       {trust && (
-        <span className="text-[12px] text-text-muted leading-snug text-center">
+        <span className="text-[11px] text-text-muted/50 leading-snug text-center mt-1">
           {trust}
         </span>
       )}

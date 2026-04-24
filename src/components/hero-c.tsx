@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DownloadButton } from "@/components/ui/download-button";
 
 /**
  * Variante C \u2013 Vercel-Logik mit Info-Dichte.
@@ -43,7 +44,7 @@ export function HeroC() {
         }}
       />
 
-      <div className="container relative pt-12 pb-12 max-tablet:pt-8 max-tablet:pb-8">
+      <div className="container relative pt-16 pb-16 max-tablet:pt-10 max-tablet:pb-10">
         {/* Block 1: Headline (Problem \u2192 Loesung) + Sub */}
         <div className="max-w-[1000px] mx-auto text-center">
           <h1
@@ -104,21 +105,12 @@ export function HeroC() {
         {/* Block 3: CTAs + Trust-Zeile */}
         <div className="mt-9 text-center">
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            <a
-              href="https://www.processcube.io/download"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="plausible-event-name=cta_hero_trial_c inline-flex items-center justify-center h-12 px-6 rounded-btn font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(248,181,68,0.3)] transition-all"
-              style={{ color: "#000" }}
+            <DownloadButton
+              event="cta_hero_trial_c"
+              className="inline-flex items-center justify-center h-12 px-6 rounded-btn font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(248,181,68,0.3)] transition-all text-black cursor-pointer"
             >
               Kostenlos starten
-            </a>
-            <a
-              href="mailto:info@processcube.io?subject=Ticketpilot%20Demo-Anfrage"
-              className="plausible-event-name=cta_hero_demo_c inline-flex items-center justify-center h-12 px-6 rounded-btn font-bold bg-white/[0.06] border border-line text-text-primary hover:bg-white/10 transition-colors"
-            >
-              Demo anfragen
-            </a>
+            </DownloadButton>
           </div>
           <p className="text-[12px] text-text-muted mt-3">
             30 Tage kostenlos &middot; Monatlich k&uuml;ndbar &middot; Setup in 15 Minuten

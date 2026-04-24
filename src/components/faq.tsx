@@ -85,7 +85,7 @@ export function Faq() {
         Ja, wir kennen deine Bedenken.
       </h2>
 
-      <div className="grid gap-3.5 mt-9 max-w-[820px]">
+      <div className="grid gap-5 mt-9">
         {faqs.map((faq) => (
           <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
         ))}

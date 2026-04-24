@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { DownloadButton } from "@/components/ui/download-button";
 
 /**
  * Header fuer Variante C (Final).
@@ -103,21 +104,12 @@ export function HeaderC() {
 
           {/* Actions rechts */}
           <div className="flex items-center gap-1 tablet:gap-2 shrink-0">
-            <a
-              href="mailto:info@processcube.io?subject=Ticketpilot%20Demo-Anfrage"
-              className="plausible-event-name=cta_header_demo_c inline-flex items-center h-9 px-3 rounded-btn text-[14px] text-text-muted hover:text-text-primary hover:bg-white/5 transition-colors"
-            >
-              Demo
-            </a>
-            <a
-              href={DOWNLOAD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="plausible-event-name=cta_header_trial_c inline-flex items-center h-9 px-4 rounded-btn text-[14px] font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 transition-transform"
-              style={{ color: "#000" }}
+            <DownloadButton
+              event="cta_header_trial_c"
+              className="inline-flex items-center h-9 px-4 rounded-btn text-[14px] font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 transition-transform text-black cursor-pointer"
             >
               Kostenlos starten
-            </a>
+            </DownloadButton>
 
             {/* Burger (Mobile) */}
             <button

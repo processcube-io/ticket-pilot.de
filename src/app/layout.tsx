@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Barlow_Condensed, Roboto } from "next/font/google";
-import { VariantTracker } from "@/components/variant-tracker";
+import { DownloadProvider } from "@/components/download-modal";
 import "./globals.css";
 
 const barlow = Barlow_Condensed({
@@ -51,7 +51,9 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${barlow.variable} ${roboto.variable}`}>
       <body>
+        <DownloadProvider>
         {children}
+        </DownloadProvider>
         {plausibleDomain && (
           <Script
             src={plausibleSrc}
@@ -60,7 +62,6 @@ export default function RootLayout({
             defer
           />
         )}
-        <VariantTracker />
       </body>
     </html>
   );

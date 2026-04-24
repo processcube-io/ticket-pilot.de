@@ -11,7 +11,7 @@ export function FinalCta({
   ctaLabel = "Jetzt kostenlos starten \u2013 in 15 Minuten l\u00e4uft es",
 }: { ctaHref?: string; ctaLabel?: string } = {}) {
   return (
-    <SectionWrapper id="finale" hideScrollHint>
+    <SectionWrapper id="finale">
       <EyebrowBadge>Kostenlos testen</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"

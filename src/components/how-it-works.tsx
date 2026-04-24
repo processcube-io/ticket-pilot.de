@@ -39,7 +39,7 @@ export function HowItWorks() {
         das erste Ticket automatisch durch.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9">
+      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
         {steps.map((step) => (
           <Card key={step.number}>
             <div className="w-[60px] h-[60px] rounded-[16px] bg-accent-soft border border-accent-border grid place-items-center text-accent font-black font-headline text-[26px]">
