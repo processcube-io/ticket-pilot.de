@@ -79,7 +79,21 @@ export function OnepagerProvider({ children }: { children: React.ReactNode }) {
                 ROI-Onepager
               </span>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  const iframe = document.querySelector<HTMLIFrameElement>('iframe[title="ROI-Onepager"]');
+                  if (iframe?.contentWindow) iframe.contentWindow.print();
+                }}
+                className="inline-flex items-center gap-1.5 h-9 px-4 rounded-btn text-[13px] font-bold bg-gradient-to-br from-accent to-accent-hover text-black hover:-translate-y-0.5 transition-all cursor-pointer"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6 9 6 2 18 2 18 9" />
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                  <rect x="6" y="14" width="12" height="8" />
+                </svg>
+                PDF / Drucken
+              </button>
               <a
                 href="/roi-onepager"
                 target="_blank"
@@ -92,7 +106,7 @@ export function OnepagerProvider({ children }: { children: React.ReactNode }) {
                   <polyline points="15 3 21 3 21 9" />
                   <line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
-                Im neuen Tab
+                Neuer Tab
               </a>
               <button
                 onClick={close}

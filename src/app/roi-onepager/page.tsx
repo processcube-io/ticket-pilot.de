@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { PrintButton } from "./print-button";
 
 export const metadata = {
   title: "Ticketpilot ROI-Onepager zum Weitergeben",
@@ -10,19 +8,6 @@ export const metadata = {
 export default function RoiOnepager() {
   return (
     <div className="bg-white text-neutral-900 min-h-screen print:bg-white">
-      {/* Toolbar: nur Bildschirm, nicht im Print */}
-      <div className="print:hidden border-b border-neutral-200 bg-neutral-50">
-        <div className="max-w-[900px] mx-auto px-8 py-4 flex items-center justify-between gap-4 flex-wrap">
-          <div className="text-sm text-neutral-600">
-            Druckoptimierte Ansicht &middot;{" "}
-            <Link href="/" className="underline hover:text-neutral-900">
-              Zur&uuml;ck zur Landingpage
-            </Link>
-          </div>
-          <PrintButton />
-        </div>
-      </div>
-
       <article className="max-w-[760px] mx-auto px-8 py-12 print:px-0 print:py-6 print:max-w-full">
         <header className="border-b-2 border-neutral-900 pb-6 mb-8">
           <div className="flex items-center justify-between gap-4 flex-wrap">
