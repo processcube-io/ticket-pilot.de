@@ -26,7 +26,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <SectionWrapper id="funktion">
-      <EyebrowBadge>Kein IT-Projekt. Versprochen.</EyebrowBadge>
+      <EyebrowBadge>So funktioniert&rsquo;s</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}

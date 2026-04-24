@@ -61,9 +61,23 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function Faq() {
+  // Schema.org FAQPage-Markup: Google kann daraus Featured Snippets bauen.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+
   return (
     <SectionWrapper id="faq">
-      <EyebrowBadge>Bevor du fragst</EyebrowBadge>
+      <EyebrowBadge>FAQ</EyebrowBadge>
       <h2
         className="headline max-w-[820px] mb-5"
         style={{ fontSize: "clamp(42px, 6vw, 72px)" }}
@@ -76,6 +90,12 @@ export function Faq() {
           <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
         ))}
       </div>
+
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </SectionWrapper>
   );
 }
