@@ -106,7 +106,7 @@ export function HeaderC() {
           <div className="flex items-center gap-1 tablet:gap-2 shrink-0">
             <DownloadButton
               event="cta_header_trial_c"
-              className="inline-flex items-center h-9 px-4 rounded-btn text-[14px] font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 transition-transform text-black cursor-pointer"
+              className="hidden tablet:inline-flex items-center h-9 px-4 rounded-btn text-[14px] font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 transition-transform text-black cursor-pointer"
             >
               Kostenlos starten
             </DownloadButton>
