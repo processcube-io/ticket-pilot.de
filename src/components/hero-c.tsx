@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DownloadButton } from "@/components/ui/download-button";
+import { VideoButton } from "@/components/ui/video-button";
 
 /**
  * Variante C \u2013 Vercel-Logik mit Info-Dichte.
@@ -111,6 +112,25 @@ export function HeroC() {
             >
               Kostenlos starten
             </DownloadButton>
+            <VideoButton
+              event="cta_hero_demo_video"
+              className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-btn font-bold border border-line bg-white/[0.02] text-text-primary hover:border-accent/60 hover:bg-white/[0.05] transition-all cursor-pointer"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                className="text-accent"
+              >
+                <polygon points="6 4 20 12 6 20" />
+              </svg>
+              Demo ansehen
+              <span className="text-text-muted font-normal text-[13px]">
+                &middot; 2&nbsp;Min
+              </span>
+            </VideoButton>
           </div>
           <p className="text-[12px] text-text-muted mt-3">
             30 Tage kostenlos &middot; Monatlich k&uuml;ndbar &middot; Setup in 15 Minuten

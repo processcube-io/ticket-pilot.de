@@ -2,6 +2,7 @@ import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { EyebrowBadge } from "@/components/ui/eyebrow-badge";
 import { Card } from "@/components/ui/card";
 import { PrimaryCta } from "@/components/ui/primary-cta";
+import { VideoButton } from "@/components/ui/video-button";
 
 const demoSteps = [
   {
@@ -94,22 +95,47 @@ export function LiveDemo({
 
         <Card className="flex flex-col justify-center text-center items-center">
           <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
-            Was dein Entwickler in der Zeit gemacht hat
+            Sieh es in 2 Minuten
           </span>
           <h3 className="font-headline text-[28px] uppercase tracking-[0.02em] mt-3 mb-2.5 leading-none">
-            Etwas anderes. Etwas Wichtigeres.
+            Live-Demo: Wie Ticketpilot arbeitet
           </h3>
-          <p className="text-text-muted max-w-[400px]">
-            W&auml;hrend Ticketpilot den Bug kategorisiert, den Fix schreibt,
-            testet und auf die Testumgebung deployed &ndash; hat dein Entwickler
-            an einem Feature gearbeitet. Oder Architektur reviewed. Oder Kaffee
-            getrunken. Der Punkt ist: Er musste nicht debuggen.
+          <p className="text-text-muted max-w-[400px] mb-5">
+            Ein echter Bug-Report, klassifiziert, gefixt, getestet &ndash;
+            kompakt erkl&auml;rt im Video.
           </p>
-          <p className="text-text-muted mt-3 max-w-[400px]">
-            Nach 15 Minuten &ouml;ffnet er die Testumgebung, pr&uuml;ft das
-            Ergebnis und gibt die Abnahme.
-            <strong className="text-text-primary"> Das ist alles, was er tun muss.</strong>
-          </p>
+
+          <VideoButton
+            event="cta_demo_section_video"
+            ariaLabel="Live-Demo Video ansehen (oeffnet Modal)"
+            className="group relative w-full max-w-[440px] aspect-video rounded-card overflow-hidden border border-line bg-black hover:border-accent/60 transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+          >
+            <img
+              src="/demo-poster.jpg"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent text-black shadow-[0_8px_24px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  className="ml-1"
+                >
+                  <polygon points="6 4 20 12 6 20" />
+                </svg>
+              </span>
+            </span>
+            <span className="absolute bottom-3 left-3 right-3 text-left text-white text-[13px] font-bold drop-shadow-md">
+              Ticketpilot &ndash; Live-Demo
+              <span className="text-white/70 font-normal"> &middot; 2&nbsp;Min</span>
+            </span>
+          </VideoButton>
+
           <div className="mt-6">
             <PrimaryCta href={ctaHref} event="cta_demo_trial" label={ctaLabel} />
           </div>

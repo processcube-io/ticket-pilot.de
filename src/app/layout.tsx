@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Barlow_Condensed, Roboto } from "next/font/google";
 import { DownloadProvider } from "@/components/download-modal";
 import { OnepagerProvider } from "@/components/onepager-modal";
+import { VideoProvider } from "@/components/video-modal";
 import "./globals.css";
 
 const barlow = Barlow_Condensed({
@@ -41,30 +42,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Plausible: l\u00e4dt nur, wenn NEXT_PUBLIC_PLAUSIBLE_DOMAIN gesetzt ist.
-  // Optional: NEXT_PUBLIC_PLAUSIBLE_SRC \u00fcberschreibt die Script-URL
-  // (z. B. f\u00fcr self-hosted Plausible: https://stats.example.com/js/script.tagged-events.js).
-  const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-  const plausibleSrc =
-    process.env.NEXT_PUBLIC_PLAUSIBLE_SRC ??
-    "https://plausible.io/js/script.tagged-events.js";
-
   return (
     <html lang="de" className={`${barlow.variable} ${roboto.variable}`}>
       <body>
         <DownloadProvider>
-        <OnepagerProvider>
-        {children}
-        </OnepagerProvider>
+          <OnepagerProvider>
+            <VideoProvider>{children}</VideoProvider>
+          </OnepagerProvider>
         </DownloadProvider>
-        {plausibleDomain && (
-          <Script
-            src={plausibleSrc}
-            data-domain={plausibleDomain}
-            strategy="afterInteractive"
-            defer
-          />
-        )}
+        <Script
+          src="https://plausible.io/js/pa--T6CrgJa5DrqYZ3dUAqWS.js"
+          strategy="afterInteractive"
+          async
+        />
+        <Script id="plausible-init" strategy="afterInteractive">
+          {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`}
+        </Script>
       </body>
     </html>
   );
