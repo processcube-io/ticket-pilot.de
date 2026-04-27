@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 
 // ctaHref:  Default zeigt auf den ProcessCube-Shop. Variante C uebergibt
 //           die Studio-Download-URL direkt.
-// ctaLabel: Default "Jetzt kostenlos starten \u2013 in 15 Minuten laeuft es"
+// ctaLabel: Default "Jetzt kostenlos starten \u2013 lokal in 15 Minuten laeuft es"
 //           Variante C nutzt die kuerzere Form ohne Tail.
 export function FinalCta({
   ctaHref = "https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot",
-  ctaLabel = "Jetzt kostenlos starten \u2013 in 15 Minuten l\u00e4uft es",
+  ctaLabel = "Jetzt kostenlos starten \u2013 lokal in 15 Minuten l\u00e4uft es",
 }: { ctaHref?: string; ctaLabel?: string } = {}) {
   return (
     <SectionWrapper id="finale">

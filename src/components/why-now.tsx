@@ -64,7 +64,7 @@ export function WhyNow({
             +&thinsp;9.000&nbsp;&euro;
           </strong>
           <p className="text-text-muted text-sm mt-3 m-0">
-            pro Dev pro Jahr. Installation dauert 15 Minuten, Trial 30 Tage,
+            pro Dev pro Jahr. Lokal in 15 Minuten startklar, Trial 30 Tage,
             Entscheidung jederzeit reversibel.
           </p>
         </div>
@@ -81,13 +81,17 @@ export function WhyNow({
           drei Mal kleiner als die Opportunity-Cost &ndash; und du kannst
           jederzeit aussteigen.
         </p>
-        <div className="mt-5">
+        <div className="mt-5 flex items-end justify-between gap-4 flex-wrap">
           <PrimaryCta
             href={ctaHref}
             event="cta_whynow_trial"
             label={ctaLabel}
+            trust={null}
             secondary={{ href: "#warum", label: "Rechnung nachvollziehen \u2191" }}
           />
+          <span className="text-[11px] text-text-muted/50 leading-snug ml-auto self-end">
+            Monatlich k&uuml;ndbar &middot; Erinnerung 5 Tage vor Abrechnung
+          </span>
         </div>
       </div>
 
@@ -103,7 +107,7 @@ export function WhyNow({
           Ticketpilot liefert den Audit-Trail ab Tag 1 &ndash; jedes Ticket,
           jeder Fix, jeder Reviewer dokumentiert.
         </p>
-        <p className="text-[10px] text-text-muted/40 mt-3 m-0 pl-3 border-l border-line/50">
+        <p className="text-[10px] text-text-muted/40 mt-3 m-0 pr-3 border-r border-line/50 text-right">
           Quelle: Richtlinie (EU) 2022/2555 &bdquo;NIS2&ldquo;, Umsetzung in
           DE durch NIS2UmsuCG (in Gesetzgebung).
         </p>

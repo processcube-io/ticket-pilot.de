@@ -28,7 +28,7 @@ const faqs = [
   {
     question: "Wie lange dauert es, bis das l\u00E4uft?",
     answer:
-      "15 Minuten. Docker-Container starten, Konnektor konfigurieren, BPMN-Template aktivieren. Kein Consultant, kein Projekt, kein Genehmigungsprozess.",
+      "Lokal in ca. 15 Minuten: Docker-Container starten, Konnektor konfigurieren, BPMN-Template aktivieren. Bei Kubernetes oder Cloud (Hetzner) h\u00E4ngt die Installationszeit von Netzwerk und vorhandenen bzw. gew\u00E4hlten Rechnern ab. In allen F\u00E4llen gilt: kein Consultant, kein Projekt, kein Genehmigungsprozess.",
   },
   {
     question: "Was, wenn es mir nicht gef\u00E4llt?",

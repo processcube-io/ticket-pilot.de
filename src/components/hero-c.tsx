@@ -96,7 +96,7 @@ export function HeroC() {
             kpi={"249\u00a0\u20ac"}
             label={"Fix pro Monat \u2013 ganzes Team"}
             sub={
-              "Keine Per-Seat-Lizenz. 30 Tage kostenlos, monatlich k\u00fcndbar, Setup in 15 Minuten."
+              "Keine Per-Seat-Lizenz. 30 Tage kostenlos, monatlich k\u00fcndbar, lokal in 15 Minuten startklar."
             }
             linkHref="#pricing"
             linkLabel="Pricing-Details"
@@ -133,7 +133,7 @@ export function HeroC() {
             </VideoButton>
           </div>
           <p className="text-[12px] text-text-muted mt-3">
-            30 Tage kostenlos &middot; Monatlich k&uuml;ndbar &middot; Setup in 15 Minuten
+            30 Tage kostenlos &middot; Monatlich k&uuml;ndbar &middot; Lokal in 15 Minuten startklar
           </p>
         </div>
 
