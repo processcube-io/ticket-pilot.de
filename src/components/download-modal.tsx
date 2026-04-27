@@ -107,7 +107,7 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
 
           {/* Modal */}
           <div
-            className="relative bg-card border border-line rounded-card p-8 max-w-[460px] w-full shadow-[0_32px_80px_rgba(0,0,0,0.5)]"
+            className="relative bg-card border border-line rounded-card p-8 max-w-[520px] w-full shadow-[0_32px_80px_rgba(0,0,0,0.5)]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -200,15 +200,18 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
                   <strong className="text-text-primary text-sm block mb-2">
                     N&auml;chste Schritte:
                   </strong>
-                  <ol className="list-decimal pl-5 text-sm text-text-muted grid gap-1.5 m-0">
+                  <ol className="list-decimal pl-5 text-sm text-text-muted grid gap-2 m-0 leading-relaxed">
                     <li>
-                      ProcessCube Studio {platform === "windows" ? "installieren und " : ""}starten
+                      ProcessCube&reg; Studio installieren und starten
                     </li>
                     <li>
-                      Ticketpilot-Extension aus dem Marketplace installieren
+                      Unter &bdquo;Kostenlos starten&ldquo; die Ticketpilot-Variante w&auml;hlen:{" "}
+                      <span className="text-text-primary font-medium">lokal</span>,{" "}
+                      <span className="text-text-primary font-medium">k8s</span> oder{" "}
+                      <span className="text-text-primary font-medium">cloud by Hetzner</span>
                     </li>
                     <li>
-                      30-Tage-Trial aktivieren &ndash; fertig!
+                      Den Anweisungen des Installationsassistenten folgen &ndash; fertig!
                     </li>
                   </ol>
                 </div>
