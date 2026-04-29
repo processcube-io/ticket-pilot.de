@@ -118,8 +118,20 @@ export function Pricing() {
         <div className="mt-9 grid desktop:grid-cols-3 gap-5 items-stretch">
           {PLAN_META.map((meta) => (
             <Card key={meta.id} highlighted={meta.highlighted}>
-              <div className="h-[420px] animate-pulse text-text-muted/40 text-sm">
-                Lade aktuelle Preise &hellip;
+              <div className="animate-pulse">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-md bg-white/[0.06]" />
+                  <div className="h-3 w-24 rounded bg-white/[0.06]" />
+                </div>
+                <div className="h-12 w-32 rounded bg-white/[0.06] mt-5" />
+                <div className="grid gap-2 mt-6">
+                  <div className="h-3 w-full rounded bg-white/[0.04]" />
+                  <div className="h-3 w-11/12 rounded bg-white/[0.04]" />
+                  <div className="h-3 w-9/12 rounded bg-white/[0.04]" />
+                  <div className="h-3 w-10/12 rounded bg-white/[0.04] mt-3" />
+                  <div className="h-3 w-8/12 rounded bg-white/[0.04]" />
+                </div>
+                <div className="h-[54px] w-full rounded-btn bg-white/[0.05] mt-8" />
               </div>
             </Card>
           ))}
@@ -174,7 +186,11 @@ export function Pricing() {
                 <div className="mt-auto pt-6">
                   <DownloadButton
                     event={meta.ctaEvent}
-                    className="w-full inline-flex items-center justify-center min-h-[54px] px-[22px] rounded-btn font-bold transition-all duration-200 bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_2px_8px_rgba(248,181,68,0.3)] text-black cursor-pointer"
+                    className={
+                      meta.highlighted
+                        ? "w-full inline-flex items-center justify-center min-h-[60px] px-[22px] rounded-btn font-bold text-[17px] transition-all duration-200 bg-gradient-to-br from-accent to-accent-hover text-black shadow-[0_8px_24px_rgba(248,181,68,0.35)] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(248,181,68,0.5)] cursor-pointer"
+                        : "w-full inline-flex items-center justify-center min-h-[54px] px-[22px] rounded-btn font-bold transition-all duration-200 bg-transparent border border-accent/60 text-accent hover:bg-accent-soft hover:border-accent cursor-pointer"
+                    }
                   >
                     {CTA_LABEL}
                   </DownloadButton>
