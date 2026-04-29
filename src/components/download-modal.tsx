@@ -7,24 +7,23 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 /* ------------------------------------------------------------------ */
 
 const BASE = "https://marketplace.processcube.io/studio_download";
-const VERSION = "3.0.0";
 
 type Platform = "macos-arm" | "macos-x64" | "windows";
 
 const PLATFORMS: { id: Platform; label: string; sub: string }[] = [
   { id: "macos-arm", label: "macOS (Apple Silicon)", sub: "M1 / M2 / M3 / M4" },
   { id: "macos-x64", label: "macOS (Intel)", sub: "x86-64" },
-  { id: "windows", label: "Windows", sub: "64-Bit" },
+  { id: "windows", label: "Windows", sub: "64-Bit (Intel)" },
 ];
 
 function downloadUrl(platform: Platform): string {
   switch (platform) {
     case "macos-arm":
-      return `${BASE}/processcube-studio-${VERSION}-arm64.dmg`;
+      return `${BASE}/processcube-studio-latest-arm64.dmg`;
     case "macos-x64":
-      return `${BASE}/processcube-studio-${VERSION}-x64.dmg`;
+      return `${BASE}/processcube-studio-latest-x64.dmg`;
     case "windows":
-      return `${BASE}/processcube-studio-${VERSION}.exe`;
+      return `${BASE}/processcube-studio-latest.exe`;
   }
 }
 
@@ -173,7 +172,7 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
                 </button>
 
                 <p className="text-[11px] text-text-muted/50 text-center mt-3 m-0">
-                  Version {VERSION} &middot; Kostenlos &middot; Keine Registrierung
+                  Kostenlos &middot; Keine Registrierung
                 </p>
               </>
             )}
