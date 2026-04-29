@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DownloadButton } from "@/components/ui/download-button";
 
 /**
  * Header fuer Variante C (Final).
@@ -10,11 +9,11 @@ import { DownloadButton } from "@/components/ui/download-button";
  *   - Logo (links)
  *   - Section-Links (zentriert, ab Desktop sichtbar) \u2013 gleiche Anker
  *     wie die gelben Eyebrows der Sektionen, damit Nutzer sich wiederfinden.
- *   - Rechts: Demo (mailto) + Kostenlos starten (Primary)
  *   - Mobile: Burger-Menue mit allen Section-Links
  *
  * Aktive Section wird per IntersectionObserver getrackt und mit einem
- * Accent-Underline markiert.
+ * Accent-Underline markiert. Der primaere CTA (Kostenlos starten) sitzt
+ * pro Variante in der Pricing-Sektion, nicht im Header.
  */
 
 type NavLink = { href: string; label: string };
@@ -28,8 +27,6 @@ const navLinks: NavLink[] = [
   { href: "#faq", label: "FAQ" },
   { href: "#pricing", label: "Pricing" },
 ];
-
-const DOWNLOAD_URL = "https://www.processcube.io/download";
 
 export function HeaderC() {
   const [activeId, setActiveId] = useState("");
@@ -104,13 +101,6 @@ export function HeaderC() {
 
           {/* Actions rechts */}
           <div className="flex items-center gap-1 tablet:gap-2 shrink-0">
-            <DownloadButton
-              event="cta_header_trial_c"
-              className="hidden tablet:inline-flex items-center h-9 px-4 rounded-btn text-[14px] font-bold bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 transition-transform text-black cursor-pointer"
-            >
-              Kostenlos starten
-            </DownloadButton>
-
             {/* Burger (Mobile) */}
             <button
               type="button"

@@ -35,7 +35,7 @@ export default function Home() {
       <Compliance />
       <WhyNow ctaHref={DOWNLOAD_URL} ctaLabel={CTA_LABEL} />
       <Faq />
-      <Pricing ctaHref={DOWNLOAD_URL} ctaLabel={CTA_LABEL} />
+      <Pricing />
       <FinalCta ctaHref={DOWNLOAD_URL} ctaLabel={CTA_LABEL} />
       <Footer />
       <MobileStickyCta

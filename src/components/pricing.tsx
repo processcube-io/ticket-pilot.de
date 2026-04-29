@@ -1,7 +1,7 @@
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { EyebrowBadge } from "@/components/ui/eyebrow-badge";
 import { Card } from "@/components/ui/card";
-import { PrimaryCta } from "@/components/ui/primary-cta";
+import { DownloadButton } from "@/components/ui/download-button";
 
 type Plan = {
   tag: string;
@@ -12,6 +12,7 @@ type Plan = {
   includes: string[];
   hosting: string[];
   highlighted?: boolean;
+  ctaEvent: string;
 };
 
 const plans: Plan[] = [
@@ -33,6 +34,7 @@ const plans: Plan[] = [
       "Backups: du",
       "SLA: best effort",
     ],
+    ctaEvent: "cta_pricing_lokal",
   },
   {
     tag: "Cloud by Hetzner",
@@ -53,6 +55,7 @@ const plans: Plan[] = [
       "Backups & SLA: gem\u00E4\u00DF deinem Hetzner-Tarif",
     ],
     highlighted: true,
+    ctaEvent: "cta_pricing_hetzner",
   },
   {
     tag: "Cloud K8s",
@@ -72,16 +75,13 @@ const plans: Plan[] = [
       "Backups: euer Cluster",
       "SLA: nach Cluster-SLO",
     ],
+    ctaEvent: "cta_pricing_k8s",
   },
 ];
 
-const DEFAULT_SHOP_HREF =
-  "https://www.processcube.io/shop/category/software-abos-1?search=ticketpilot";
+const CTA_LABEL = "Kostenlos starten";
 
-export function Pricing({
-  ctaHref = DEFAULT_SHOP_HREF,
-  ctaLabel,
-}: { ctaHref?: string; ctaLabel?: string } = {}) {
+export function Pricing() {
   return (
     <SectionWrapper id="pricing">
       <EyebrowBadge>Pricing</EyebrowBadge>
@@ -146,6 +146,15 @@ export function Pricing({
             <p className="text-sm text-text-muted mt-5 pt-4 border-t border-line">
               <strong className="text-text-primary">Passt zu:</strong> {plan.bestFor}
             </p>
+
+            <div className="mt-auto pt-6">
+              <DownloadButton
+                event={plan.ctaEvent}
+                className="w-full inline-flex items-center justify-center min-h-[54px] px-[22px] rounded-btn font-bold transition-all duration-200 bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_2px_8px_rgba(248,181,68,0.3)] text-black cursor-pointer"
+              >
+                {CTA_LABEL}
+              </DownloadButton>
+            </div>
           </Card>
         ))}
       </div>
@@ -162,17 +171,14 @@ export function Pricing({
         </span>
       </div>
 
-      <div className="mt-7 flex flex-col items-center text-center">
-        <PrimaryCta href={ctaHref} event="cta_pricing_trial" label={ctaLabel} />
-        <p className="text-[11px] text-text-muted/40 mt-5 text-left pl-3 border-l border-line/50 leading-relaxed">
-          <strong className="text-text-muted/60">Kein Abo-Automatismus ohne Hinweis:</strong>{" "}
-          Zahlungsmittel wird bei Registrierung hinterlegt. 5 Tage vor Ablauf der
-          30-Tage-Testphase erh&auml;ltst du eine Erinnerung per E-Mail. Ohne
-          K&uuml;ndigung startet die Abrechnung am Tag 31. Monatlich k&uuml;ndbar.
-          KI-Provider-Kosten (Claude, GPT, Gemini) werden direkt vom Anbieter
-          abgerechnet &ndash; typisch 20&ndash;50&nbsp;&euro; / Monat pro Team.
-        </p>
-      </div>
+      <p className="text-[11px] text-text-muted/40 mt-7 text-left pl-3 border-l border-line/50 leading-relaxed max-w-[820px]">
+        <strong className="text-text-muted/60">Kein Abo-Automatismus ohne Hinweis:</strong>{" "}
+        Zahlungsmittel wird bei Registrierung hinterlegt. 5 Tage vor Ablauf der
+        30-Tage-Testphase erh&auml;ltst du eine Erinnerung per E-Mail. Ohne
+        K&uuml;ndigung startet die Abrechnung am Tag 31. Monatlich k&uuml;ndbar.
+        KI-Provider-Kosten (Claude, GPT, Gemini) werden direkt vom Anbieter
+        abgerechnet &ndash; typisch 20&ndash;50&nbsp;&euro; / Monat pro Team.
+      </p>
     </SectionWrapper>
   );
 }
