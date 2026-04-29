@@ -134,10 +134,10 @@ export function Compliance() {
         Dein Datenschutz- oder Security-Team darf direkt mit uns sprechen.
         Kontaktiere uns &uuml;ber{" "}
         <a
-          href="https://www.processcube.io/kontakt"
+          href="https://www.processcube.io/contactus"
           className="underline hover:text-text-primary"
         >
-          processcube.io/kontakt
+          processcube.io/contactus
         </a>
         .
       </p>
