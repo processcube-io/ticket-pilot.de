@@ -1,87 +1,91 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { SectionWrapper } from "@/components/ui/section-wrapper";
 import { EyebrowBadge } from "@/components/ui/eyebrow-badge";
 import { Card } from "@/components/ui/card";
 import { DownloadButton } from "@/components/ui/download-button";
 
-type Plan = {
-  tag: string;
-  price: string;
-  priceNote: string;
-  pitch: string;
-  bestFor: string;
-  includes: string[];
-  hosting: string[];
-  highlighted?: boolean;
-  ctaEvent: string;
-};
+/**
+ * Pricing-Sektion fuer Ticketpilot.
+ *
+ * Inhalte werden zur Laufzeit aus dem ProcessCube-Marketplace geladen.
+ * Editorial bleibt: Reihenfolge, Tag-Beschriftung, Empfohlen-Hervorhebung
+ * und der Plausible-Event-Name pro Karte. Alles andere (Name, Preis,
+ * Beschreibung, Icon) kommt aus der API.
+ *
+ * Wenn die API offline ist, blendet die Sektion eine kurze Meldung ein
+ * und versteckt den Karten-Bereich, statt die Seite zu blockieren.
+ */
 
-const plans: Plan[] = [
-  {
-    tag: "Lokal",
-    price: "229\u00A0\u20AC",
-    priceNote: "/ Monat &middot; keine Hosting-Kosten",
-    pitch: "L\u00E4uft auf deiner eigenen Hardware oder deinem eigenen Server. Du beh\u00E4ltst volle Datensouver\u00E4nit\u00E4t, brauchst aber ein:e:n DevOps-Zust\u00E4ndige:n f\u00FCr Updates.",
-    bestFor: "Regulierte Branchen, strenge IT-Policy, vorhandene Server-Infra.",
-    includes: [
-      "Alle Konnektoren (Odoo, Jira, GitHub)",
-      "BPMN-Prozesse & Templates",
-      "Gef\u00FChrte Installation via Cuby",
-      "E-Mail-Support (24 h Reaktionszeit)",
-    ],
-    hosting: [
-      "Betrieb: du",
-      "Updates: du (1-Klick via Cuby)",
-      "Backups: du",
-      "SLA: best effort",
-    ],
-    ctaEvent: "cta_pricing_lokal",
-  },
-  {
-    tag: "Cloud by Hetzner",
-    price: "249\u00A0\u20AC",
-    priceNote: "/ Monat + Hetzner-Server (ca. 15\u201340\u00A0\u20AC/Monat, direkt an Hetzner)",
-    pitch: "Ticketpilot l\u00E4uft auf deinem eigenen Hetzner-Server in Deutschland. Du buchst den Server direkt bei Hetzner (eigener Vertrag, eigene Abrechnung), wir liefern den fertigen Installations-Pfad via Cuby. Schnellster Start ohne eigene DevOps-Plattform.",
-    bestFor: "Teams, die DE-Hosting zu Hetzner-Preisen wollen und keine eigene K8s-/Server-Infra betreiben.",
-    includes: [
-      "Alle Konnektoren (Odoo, Jira, GitHub)",
-      "BPMN-Prozesse & Templates",
-      "Gef\u00FChrte Installation via Cuby auf Hetzner",
-      "E-Mail-Support f\u00FCr Ticketpilot (24 h Reaktionszeit)",
-    ],
-    hosting: [
-      "Server-Betrieb: du (Hetzner-Vertrag bei dir)",
-      "Empfehlung: CPX21/CPX31 bei Hetzner (DE)",
-      "Ticketpilot-Updates: 1-Klick via Cuby",
-      "Backups & SLA: gem\u00E4\u00DF deinem Hetzner-Tarif",
-    ],
-    highlighted: true,
-    ctaEvent: "cta_pricing_hetzner",
-  },
-  {
-    tag: "Cloud K8s",
-    price: "249\u00A0\u20AC",
-    priceNote: "/ Monat &middot; Infra-Kosten bei euch",
-    pitch: "F\u00FCr Enterprise-Teams mit eigener Kubernetes-Plattform. Deployment via Helm-Chart in eurem Cluster, HA- und Multi-Replica-Setups m\u00F6glich.",
-    bestFor: "Konzerne & ScaleUps mit zentralem K8s-Betrieb, die Ticketpilot in bestehende Infra integrieren.",
-    includes: [
-      "Alles aus \u201ELokal\u201C",
-      "Helm-Chart + Values-Beispiele",
-      "HA-Setup (Multi-Replica) m\u00F6glich",
-      "Support f\u00FCr eure DevOps (Slack Connect)",
-    ],
-    hosting: [
-      "Betrieb: eure Plattform",
-      "Ingress & Secrets: eure Standards",
-      "Backups: euer Cluster",
-      "SLA: nach Cluster-SLO",
-    ],
-    ctaEvent: "cta_pricing_k8s",
-  },
-];
-
+const API_URL =
+  "https://marketplace.processcube.io/public_api/featured_products?campaign=Ticketpilot";
 const CTA_LABEL = "Kostenlos starten";
 
+interface ApiProduct {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  price: number;
+  currency: string;
+}
+
+interface PlanMeta {
+  id: string;
+  tag: string;
+  ctaEvent: string;
+  highlighted?: boolean;
+}
+
+const PLAN_META: PlanMeta[] = [
+  { id: "ticketpilot-lokal", tag: "Lokal", ctaEvent: "cta_pricing_lokal" },
+  {
+    id: "ticketpilot-hetzner",
+    tag: "Cloud by Hetzner",
+    ctaEvent: "cta_pricing_hetzner",
+    highlighted: true,
+  },
+  { id: "ticketpilot-k8s", tag: "Cloud K8s", ctaEvent: "cta_pricing_k8s" },
+];
+
+/**
+ * Entfernt das eingebettete YouTube-Setup-Video und die zugehoerige
+ * Lead-Zeile aus der Marketplace-Beschreibung. Beide passen nicht in das
+ * Karten-Layout und werden auf der Landingpage anders erzaehlt.
+ */
+function cleanDescription(html: string): string {
+  return html
+    .replace(/<div[^>]*data-embedded[^>]*>[\s\S]*?<\/div>/g, "")
+    .replace(/<div>\s*<br\s*\/?>\s*<\/div>/g, "")
+    .replace(/<p>[^<]*Schaue hier[^<]*<br\s*\/?>\s*<\/p>/gi, "")
+    .trim();
+}
+
+const CURRENCY_SYMBOL: Record<string, string> = { EUR: "\u20AC" };
+
 export function Pricing() {
+  const [products, setProducts] = useState<ApiProduct[] | null>(null);
+  const [offline, setOffline] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(API_URL)
+      .then((r) => {
+        if (!r.ok) throw new Error(r.statusText);
+        return r.json();
+      })
+      .then((data: ApiProduct[]) => {
+        if (!cancelled) setProducts(data);
+      })
+      .catch(() => {
+        if (!cancelled) setOffline(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <SectionWrapper id="pricing">
       <EyebrowBadge>Pricing</EyebrowBadge>
@@ -100,71 +104,94 @@ export function Pricing() {
         Ticketpilot l&auml;uft und wer die Infrastruktur pflegt.
       </p>
 
-      <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
-        {plans.map((plan) => (
-          <Card key={plan.tag} highlighted={plan.highlighted}>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
-                {plan.tag}
-              </span>
-              {plan.highlighted && (
-                <span className="text-[11px] uppercase tracking-[0.12em] font-bold text-accent bg-accent-soft border border-accent-border px-2 py-1 rounded-pill">
-                  Empfohlen
-                </span>
-              )}
-            </div>
-            <div className="flex items-end gap-2 mt-3">
-              <strong
-                className="font-headline text-[48px] leading-none text-accent"
-                dangerouslySetInnerHTML={{ __html: plan.price }}
-              />
-              <span
-                className="text-text-muted pb-1.5 text-sm"
-                dangerouslySetInnerHTML={{ __html: plan.priceNote }}
-              />
-            </div>
-            <p className="text-text-muted mt-3 mb-4">{plan.pitch}</p>
+      {offline && (
+        <div className="mt-9 border border-line rounded-card p-6 text-center text-text-muted">
+          <strong className="text-text-primary block mb-1">
+            Preise gerade nicht verf&uuml;gbar
+          </strong>
+          Der ProcessCube-Marketplace ist aktuell nicht erreichbar. Bitte
+          versuche es in ein paar Minuten erneut.
+        </div>
+      )}
 
-            <span className="text-xs uppercase tracking-[0.12em] font-bold text-text-muted">
-              Enthalten
-            </span>
-            <ul className="feature-list">
-              {plan.includes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+      {!offline && !products && (
+        <div className="mt-9 grid desktop:grid-cols-3 gap-5 items-stretch">
+          {PLAN_META.map((meta) => (
+            <Card key={meta.id} highlighted={meta.highlighted}>
+              <div className="h-[420px] animate-pulse text-text-muted/40 text-sm">
+                Lade aktuelle Preise &hellip;
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
 
-            <span className="text-xs uppercase tracking-[0.12em] font-bold text-text-muted mt-5 block">
-              Betrieb & Verantwortung
-            </span>
-            <ul className="feature-list">
-              {plan.hosting.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+      {!offline && products && (
+        <div className="grid desktop:grid-cols-3 gap-5 mt-9 items-stretch">
+          {PLAN_META.map((meta) => {
+            const p = products.find((x) => x.id === meta.id);
+            if (!p) return null;
+            const symbol = CURRENCY_SYMBOL[p.currency] ?? p.currency;
+            return (
+              <Card key={meta.id} highlighted={meta.highlighted}>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`data:image/webp;base64,${p.icon}`}
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="rounded-md shrink-0"
+                    />
+                    <span className="text-xs uppercase tracking-[0.12em] font-bold text-accent">
+                      {meta.tag}
+                    </span>
+                  </div>
+                  {meta.highlighted && (
+                    <span className="text-[11px] uppercase tracking-[0.12em] font-bold text-accent bg-accent-soft border border-accent-border px-2 py-1 rounded-pill">
+                      Empfohlen
+                    </span>
+                  )}
+                </div>
 
-            <p className="text-sm text-text-muted mt-5 pt-4 border-t border-line">
-              <strong className="text-text-primary">Passt zu:</strong> {plan.bestFor}
-            </p>
+                <div className="flex items-end gap-2 mt-4">
+                  <strong className="font-headline text-[48px] leading-none text-accent">
+                    {p.price}&nbsp;{symbol}
+                  </strong>
+                  <span className="text-text-muted pb-1.5 text-sm">
+                    / Monat
+                  </span>
+                </div>
 
-            <div className="mt-auto pt-6">
-              <DownloadButton
-                event={plan.ctaEvent}
-                className="w-full inline-flex items-center justify-center min-h-[54px] px-[22px] rounded-btn font-bold transition-all duration-200 bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_2px_8px_rgba(248,181,68,0.3)] text-black cursor-pointer"
-              >
-                {CTA_LABEL}
-              </DownloadButton>
-            </div>
-          </Card>
-        ))}
-      </div>
+                <div
+                  className="api-description text-text-muted mt-4"
+                  dangerouslySetInnerHTML={{
+                    __html: cleanDescription(p.description),
+                  }}
+                />
+
+                <div className="mt-auto pt-6">
+                  <DownloadButton
+                    event={meta.ctaEvent}
+                    className="w-full inline-flex items-center justify-center min-h-[54px] px-[22px] rounded-btn font-bold transition-all duration-200 bg-gradient-to-br from-accent to-accent-hover hover:-translate-y-0.5 hover:shadow-[0_2px_8px_rgba(248,181,68,0.3)] text-black cursor-pointer"
+                  >
+                    {CTA_LABEL}
+                  </DownloadButton>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      )}
 
       <div className="mt-7 border border-accent-border bg-accent-soft rounded-inner p-5 text-center">
         <strong className="text-text-primary block">
           ROI ab Monat 2 &ndash; bei einem 4-Dev-Team.
         </strong>
         <span className="text-text-muted text-sm block mt-1">
-          Konservativ 9.000&nbsp;&euro; R&uuml;ckgewinn pro Dev/Jahr gegen ca. 3.000&nbsp;&euro; Jahreskosten.{" "}
+          Konservativ 9.000&nbsp;&euro; R&uuml;ckgewinn pro Dev/Jahr gegen ca.
+          3.000&nbsp;&euro; Jahreskosten.{" "}
           <a href="#warum" className="underline hover:text-text-primary">
             Rechnung mit Quellen &uarr;
           </a>
@@ -172,7 +199,9 @@ export function Pricing() {
       </div>
 
       <p className="text-[11px] text-text-muted/40 mt-7 text-left pl-3 border-l border-line/50 leading-relaxed max-w-[820px]">
-        <strong className="text-text-muted/60">Kein Abo-Automatismus ohne Hinweis:</strong>{" "}
+        <strong className="text-text-muted/60">
+          Kein Abo-Automatismus ohne Hinweis:
+        </strong>{" "}
         Zahlungsmittel wird bei Registrierung hinterlegt. 5 Tage vor Ablauf der
         30-Tage-Testphase erh&auml;ltst du eine Erinnerung per E-Mail. Ohne
         K&uuml;ndigung startet die Abrechnung am Tag 31. Monatlich k&uuml;ndbar.
