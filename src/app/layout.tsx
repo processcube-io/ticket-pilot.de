@@ -4,6 +4,7 @@ import { Barlow_Condensed, Roboto } from "next/font/google";
 import { DownloadProvider } from "@/components/download-modal";
 import { OnepagerProvider } from "@/components/onepager-modal";
 import { VideoProvider } from "@/components/video-modal";
+import { ExternalLinks } from "@/components/external-links";
 import "./globals.css";
 
 const barlow = Barlow_Condensed({
@@ -50,6 +51,7 @@ export default function RootLayout({
             <VideoProvider>{children}</VideoProvider>
           </OnepagerProvider>
         </DownloadProvider>
+        <ExternalLinks />
         <Script
           src="https://plausible.io/js/pa--T6CrgJa5DrqYZ3dUAqWS.js"
           strategy="afterInteractive"
