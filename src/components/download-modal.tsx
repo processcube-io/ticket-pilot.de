@@ -6,8 +6,8 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 /*  Download-URLs                                                      */
 /* ------------------------------------------------------------------ */
 
-const BASE = "https://marketplace.processcube.io/studio_download";
-
+// Tracking-Links auf processcube.io leiten per 301 direkt auf die
+// DMG/EXE im Marketplace, inklusive UTM-Parameter.
 type Platform = "macos-arm" | "macos-x64" | "windows";
 
 const PLATFORMS: { id: Platform; label: string; sub: string }[] = [
@@ -19,11 +19,11 @@ const PLATFORMS: { id: Platform; label: string; sub: string }[] = [
 function downloadUrl(platform: Platform): string {
   switch (platform) {
     case "macos-arm":
-      return `${BASE}/processcube-studio-latest-arm64.dmg`;
+      return "https://www.processcube.io/r/f9K";
     case "macos-x64":
-      return `${BASE}/processcube-studio-latest-x64.dmg`;
+      return "https://www.processcube.io/r/DIV";
     case "windows":
-      return `${BASE}/processcube-studio-latest.exe`;
+      return "https://www.processcube.io/r/AOY";
   }
 }
 

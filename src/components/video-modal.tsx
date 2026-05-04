@@ -10,6 +10,7 @@ import {
 
 const YOUTUBE_ID = "cs9y9t8bXss";
 const DEEP_LINK_PARAM = "demo";
+const TRACKING_URL = "https://www.processcube.io/r/Voc";
 
 const VideoCtx = createContext<{ open: () => void }>({ open: () => {} });
 
@@ -27,6 +28,20 @@ export function VideoProvider({ children }: { children: React.ReactNode }) {
       if (url.searchParams.get(DEEP_LINK_PARAM) !== "1") {
         url.searchParams.set(DEEP_LINK_PARAM, "1");
         window.history.pushState({ videoOpen: true }, "", url.toString());
+      }
+      // Tracking-Hit absetzen, ohne den Nutzer umzuleiten.
+      // no-cors + keepalive: Klick wird auch beim schnellen Schliessen gezaehlt.
+      try {
+        fetch(TRACKING_URL, {
+          method: "GET",
+          mode: "no-cors",
+          credentials: "omit",
+          referrerPolicy: "no-referrer-when-downgrade",
+          keepalive: true,
+          cache: "no-store",
+        });
+      } catch {
+        // Tracking-Fehler duerfen das Video-Erlebnis nicht blockieren.
       }
     }
   }, []);

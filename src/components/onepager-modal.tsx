@@ -8,6 +8,8 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 
 const OnepagerCtx = createContext<{ open: () => void }>({ open: () => {} });
 
+const TRACKING_URL = "https://www.processcube.io/r/c0k";
+
 export function useOnepager() {
   return useContext(OnepagerCtx);
 }
@@ -19,7 +21,24 @@ export function useOnepager() {
 export function OnepagerProvider({ children }: { children: React.ReactNode }) {
   const [visible, setVisible] = useState(false);
 
-  const open = useCallback(() => setVisible(true), []);
+  const open = useCallback(() => {
+    setVisible(true);
+    if (typeof window === "undefined") return;
+    // Tracking-Hit absetzen, ohne den Nutzer umzuleiten.
+    // no-cors + keepalive: Klick wird auch beim schnellen Schliessen gezaehlt.
+    try {
+      fetch(TRACKING_URL, {
+        method: "GET",
+        mode: "no-cors",
+        credentials: "omit",
+        referrerPolicy: "no-referrer-when-downgrade",
+        keepalive: true,
+        cache: "no-store",
+      });
+    } catch {
+      // Tracking-Fehler duerfen das Onepager-Erlebnis nicht blockieren.
+    }
+  }, []);
   const close = useCallback(() => setVisible(false), []);
 
   // Close on Escape
